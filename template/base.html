@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <style>
+        .pa {
+            background-image: url(media/s2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        
+    </style>
+</head>
+
+<body class="pa">
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                        <a href="#" class="navbar-brand">Vaccine System</a>
+                    </div>
+
+                    <div class="navbar-collapse collapse" id="mobile_menu">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                            <li class="boxed-btn3"><a href="login">Login</a> </li>
+                            <li class="boxed-btn3"><a href="register">Register</a></li>
+
+
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login / Register <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    {% if user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                                    <li><a class="dropdown-item" href="passwordform">Change Password</a></li>
+                                    <li><a class="dropdown-item" href="">Profile</a></li>
+                                    {% else %}
+                                    <li><a href="login">Login</a></li>
+                                    <li><a href="register">Register</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</html>
+{% block content %} {% endblock %}
