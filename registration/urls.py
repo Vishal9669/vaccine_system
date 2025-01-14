@@ -17,6 +17,5 @@ urlpatterns = [
     path('delete/<int:id>',views.delete,name='delete'),
     path('vaccine/<int:id>',views.vaccine,name='vaccine'),
     path('passwordchange/<int:id>',views.passwordchange,name='passwordchange'),
-    path('passwordform',views.passwordform,name='passwordform'),
-  
+    path('passwordform',views.passwordform,name='passwordform') 
 ]

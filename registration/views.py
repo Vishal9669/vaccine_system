@@ -9,19 +9,25 @@ def register(request):
     return render(request, 'register.html')
 
 def registration(request):
-    if request.method=="POST":
-        email=request.POST['email']
-        unm=request.POST['username']
-        pwd=request.POST['password']
-        try:
-            user=User.Objects.get(username=unm)
-            return render(request,'register.html',{'error':"username already exist...!!!"})
-        except:
-           user=User.objects.create_user(email=email,username=unm,password=pwd,)
-           user.save()
-           return render(request,'login.html',{'msg':"registered sucessfully"})
+    if request.method == "POST":
+        email = request.POST['email']
+        unm = request.POST['username']
+        pwd = request.POST['password']
+        
+        if User.objects.filter(username=unm).exists():
+            return render(request, 'register.html', {'error': "Username already exists...!!!"})
+        
+        if User.objects.filter(email=email).exists():
+            return render(request, 'register.html', {'error': "Email already exists...!!!"})
+        
+        user = User.objects.create_user(username=unm, email=email, password=pwd)
+        user.save()
+        
+        registrat.objects.create(username=unm, email=email, password=pwd)
+
+        return render(request, 'login.html', {'msg': "Registered successfully! Please log in."})
     else:
-        return render(request,'register.html',{'error':"invaild user request"})
+        return render(request, 'register.html', {'error': "Invalid request method"})
 
 def login(request):
     return render(request, 'login.html')
@@ -50,6 +56,7 @@ def logout(request):
 
 def viewchild(request):
     return render(request, 'viewchild.html')
+
 def addchild(request):
     if request.method=='POST':
         parent_name=request.POST['parent']
@@ -61,6 +68,7 @@ def addchild(request):
         obj= child(parent=parent_name,name=name,weight=weight,blood_group=bg,email=email,dob=dob)
         obj.save()
         return render(request, 'viewchild.html')
+    
 def showdetails(request):
     details = child.objects.all()
     return render(request, 'showdetails.html',{'child':details})
