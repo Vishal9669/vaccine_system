@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pa {
+            background: url(media/s1.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 455%;
+        }
+        
+        .ca {
+            font-size: 40px;
+            color: blueviolet;
+            font-family: sans-serif;
+        }
+        
+        .container {
+            margin-left: 180px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="pa">
+    <div class="container"></div>
+        <p class="ca">Welcome Guest</p>
+        <h3></h3>   
+    </div>
+</body>
+
+</html>
+{% endblock %}
